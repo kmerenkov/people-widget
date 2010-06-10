@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout android:id="@+id/RelativeLayout01" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:visibility="visible" android:gravity="left">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ImageButton android:id="@+id/ImageButton01" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton>
+<ImageButton android:id="@+id/ImageButton04" android:layout_below="@+id/ImageButton01" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:drawingCacheQuality="auto" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton><ImageButton android:id="@+id/ImageButton07" android:layout_below="@+id/ImageButton04" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton><ImageButton android:id="@+id/ImageButton02" android:layout_toRightOf="@+id/ImageButton01" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton>
+<ImageButton android:id="@+id/ImageButton05" android:layout_below="@+id/ImageButton02" android:layout_toRightOf="@+id/ImageButton01" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton><ImageButton android:id="@+id/ImageButton08" android:layout_below="@+id/ImageButton05" android:layout_toRightOf="@+id/ImageButton01" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton><ImageButton android:id="@+id/ImageButton03" android:layout_toRightOf="@+id/ImageButton02" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton>
+
+
+<ImageButton android:id="@+id/ImageButton06" android:layout_below="@+id/ImageButton03" android:layout_toRightOf="@+id/ImageButton02" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton>
+
+
+<ImageButton android:id="@+id/ImageButton09" android:layout_below="@+id/ImageButton06" android:layout_toRightOf="@+id/ImageButton02" android:maxHeight="@dimen/PHOTO_MAX_HEIGHT" android:maxWidth="@dimen/PHOTO_MAX_WIDTH" android:minHeight="@dimen/PHOTO_MIN_HEIGHT" android:minWidth="@dimen/PHOTO_MIN_WIDTH" android:longClickable="false" android:isScrollContainer="false" android:padding="@dimen/PHOTO_BUTTON_PADDING" android:scaleType="fitCenter" android:layout_height="@dimen/PHOTO_MAX_HEIGHT" android:layout_width="@dimen/PHOTO_MAX_WIDTH" android:visibility="gone"></ImageButton>
+</RelativeLayout>

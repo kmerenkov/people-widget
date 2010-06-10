@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<dimen name="PHOTO_MIN_HEIGHT">105dip</dimen>
+<dimen name="PHOTO_MIN_WIDTH">105dip</dimen>
+<dimen name="PHOTO_MAX_HEIGHT">105dip</dimen>
+<dimen name="PHOTO_MAX_WIDTH">105dip</dimen>
+<dimen name="PHOTO_BUTTON_PADDING">10dip</dimen>
+</resources>
