@@ -82,8 +82,8 @@ public class PeopleWidget extends AppWidgetProvider {
 				| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
         intent.setData(ContactsContract.Contacts.getLookupUri(contactInfo.getId(), Contacts.LOOKUP_KEY));
         intent.putExtra(EXTRA_TARGET_RECT, rect);
-        intent.putExtra(EXTRA_MODE, ContactsContract.QuickContact.MODE_MEDIUM);
-        intent.putExtra(EXTRA_EXCLUDE_MIMES, new String[]{});
+        intent.putExtra(EXTRA_MODE, ContactsContract.QuickContact.MODE_LARGE);
+        intent.putExtra(EXTRA_EXCLUDE_MIMES, new String[]{ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE});
         return intent;
 	}
 
