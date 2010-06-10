@@ -90,22 +90,25 @@ public class PeopleWidget extends AppWidgetProvider {
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
+
 		Uri uri = Contacts.CONTENT_URI;
-		String[] projection = new String[] {Contacts._ID, Contacts.DISPLAY_NAME, Contacts.LOOKUP_KEY};
+		String[] projection = new String[] { Contacts._ID,
+				Contacts.DISPLAY_NAME, Contacts.LOOKUP_KEY };
 		String selection = Contacts.STARRED;
-		String[] selectionArgs = new String[]{};
-		String sortOrder = Contacts.DISPLAY_NAME + " ASC"; // Contacts.LAST_TIME_CONTACTED + " DESC";
+		String[] selectionArgs = new String[] {};
+		String sortOrder = Contacts.DISPLAY_NAME + " ASC";
 
-
-		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+		RemoteViews views = new RemoteViews(context.getPackageName(),
+				R.layout.widget);
 
 		for (int i = 0; i < 9; i++) {
-			views.setViewVisibility(getCorrespondingImageId(i+1), View.GONE);
+			views.setViewVisibility(getCorrespondingImageId(i + 1), View.GONE);
 		}
 
 		views.setViewVisibility(R.id.ProgressBarLayout, View.VISIBLE);
 
-		Cursor cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
+		Cursor cursor = context.getContentResolver().query(uri, projection,
+				selection, selectionArgs, sortOrder);
 
 		List<ContactInfo> contacts = new ArrayList<ContactInfo>(9);
 
@@ -123,26 +126,28 @@ public class PeopleWidget extends AppWidgetProvider {
 		}
 
 		for (int i = 0; i < contacts.size(); i++) {
-			int viewId = getCorrespondingImageId(i+1);
+			int viewId = getCorrespondingImageId(i + 1);
 			ContactInfo c = contacts.get(i);
 			views.setImageViewUri(viewId, c.getPhotoUri());
-			views.setOnClickPendingIntent(viewId, PendingIntent.getActivity(context, 0, showQuickContact(c), PendingIntent.FLAG_UPDATE_CURRENT));
+			views.setOnClickPendingIntent(viewId, PendingIntent.getActivity(
+					context, 0, showQuickContact(c),
+					PendingIntent.FLAG_UPDATE_CURRENT));
 		}
 
 		views.setViewVisibility(R.id.ProgressBarLayout, View.GONE);
 
 		for (int i = 0; i < 9; i++) {
-			int viewId = getCorrespondingImageId(i+1);
+			int viewId = getCorrespondingImageId(i + 1);
 			if (i < contacts.size()) {
 				views.setViewVisibility(viewId, View.VISIBLE);
-			}
-			else {
+			} else {
 				views.setViewVisibility(viewId, View.GONE);
 			}
 		}
 
-        ComponentName thisWidget = new ComponentName(context, PeopleWidget.class);
-        appWidgetManager.updateAppWidget(thisWidget, views);
+		for (int widgetId = 0; widgetId < appWidgetIds.length; widgetId++) {
+			appWidgetManager.updateAppWidget(appWidgetIds[widgetId], views);
+		}
 	}
 
 }
