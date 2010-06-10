@@ -96,11 +96,18 @@ public class PeopleWidget extends AppWidgetProvider {
 		String[] selectionArgs = new String[]{};
 		String sortOrder = Contacts.DISPLAY_NAME + " ASC"; // Contacts.LAST_TIME_CONTACTED + " DESC";
 
+
+		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+
+		for (int i = 0; i < 9; i++) {
+			views.setViewVisibility(getCorrespondingImageId(i+1), View.GONE);
+		}
+
+		views.setViewVisibility(R.id.ProgressBarLayout, View.VISIBLE);
+
 		Cursor cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, sortOrder);
 
-		//Log.i(TAG, "Cursor rows count: " + cursor.getCount());
-
-		List<ContactInfo> contacts = new ArrayList<ContactInfo>(9); // how the hell do I LIMIT?
+		List<ContactInfo> contacts = new ArrayList<ContactInfo>(9);
 
 		int ci = 1;
 		while (cursor.moveToNext()) {
@@ -115,21 +122,21 @@ public class PeopleWidget extends AppWidgetProvider {
 			ci++;
 		}
 
-		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+		for (int i = 0; i < contacts.size(); i++) {
+			int viewId = getCorrespondingImageId(i+1);
+			ContactInfo c = contacts.get(i);
+			views.setImageViewUri(viewId, c.getPhotoUri());
+			views.setOnClickPendingIntent(viewId, PendingIntent.getActivity(context, 0, showQuickContact(c), PendingIntent.FLAG_UPDATE_CURRENT));
+		}
 
-		int ccount = contacts.size();
-		Log.d(TAG, "Contacts count: " + Integer.toString(ccount));
+		views.setViewVisibility(R.id.ProgressBarLayout, View.GONE);
+
 		for (int i = 0; i < 9; i++) {
 			int viewId = getCorrespondingImageId(i+1);
-			if (i < ccount) {
-				ContactInfo c = contacts.get(i);
-				Log.d(TAG, "Showing view: " + Integer.toString(viewId));
-				views.setImageViewUri(viewId, c.getPhotoUri());
+			if (i < contacts.size()) {
 				views.setViewVisibility(viewId, View.VISIBLE);
-				views.setOnClickPendingIntent(viewId, PendingIntent.getActivity(context, 0, showQuickContact(c), PendingIntent.FLAG_UPDATE_CURRENT));
 			}
 			else {
-				Log.d(TAG, "Hiding view: " + Integer.toString(viewId));
 				views.setViewVisibility(viewId, View.GONE);
 			}
 		}
