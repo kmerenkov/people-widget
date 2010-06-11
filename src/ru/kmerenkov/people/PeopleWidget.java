@@ -6,7 +6,6 @@ import java.util.List;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,6 +20,7 @@ import android.widget.RemoteViews;
 
 public class PeopleWidget extends AppWidgetProvider {
 	private static String TAG = "PeopleWidget";
+
 	public static final String ACTION_QUICK_CONTACT = "com.android.contacts.action.QUICK_CONTACT";
 	public static final String EXTRA_TARGET_RECT = "target_rect";
 	public static final String EXTRA_MODE = "mode";
@@ -89,6 +89,7 @@ public class PeopleWidget extends AppWidgetProvider {
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+		Log.d(TAG, "onUpdate event");
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
 		Uri uri = Contacts.CONTENT_URI;
@@ -98,6 +99,8 @@ public class PeopleWidget extends AppWidgetProvider {
 		String[] selectionArgs = new String[] {};
 		String sortOrder = Contacts.DISPLAY_NAME + " ASC";
 
+		Log.d(TAG, "Trying to get remote views...");
+
 		RemoteViews views = new RemoteViews(context.getPackageName(),
 				R.layout.widget);
 
@@ -106,6 +109,8 @@ public class PeopleWidget extends AppWidgetProvider {
 		}
 
 		views.setViewVisibility(R.id.ProgressBarLayout, View.VISIBLE);
+
+		Log.d(TAG, "Trying to get contacts from provider...");
 
 		Cursor cursor = context.getContentResolver().query(uri, projection,
 				selection, selectionArgs, sortOrder);
@@ -125,6 +130,9 @@ public class PeopleWidget extends AppWidgetProvider {
 			ci++;
 		}
 
+		Log.d(TAG, String.format("Found %d contacts.", contacts.size()));
+
+		Log.d(TAG, "Setting up pending intent for contacts...");
 		for (int i = 0; i < contacts.size(); i++) {
 			int viewId = getCorrespondingImageId(i + 1);
 			ContactInfo c = contacts.get(i);
@@ -134,6 +142,7 @@ public class PeopleWidget extends AppWidgetProvider {
 					PendingIntent.FLAG_UPDATE_CURRENT));
 		}
 
+		Log.d(TAG, "Hiding progress bar...");
 		views.setViewVisibility(R.id.ProgressBarLayout, View.GONE);
 
 		for (int i = 0; i < 9; i++) {
@@ -145,9 +154,12 @@ public class PeopleWidget extends AppWidgetProvider {
 			}
 		}
 
+		Log.d(TAG, "Done setting up visibility for tiles");
+
 		for (int widgetId = 0; widgetId < appWidgetIds.length; widgetId++) {
 			appWidgetManager.updateAppWidget(appWidgetIds[widgetId], views);
 		}
+		Log.d(TAG, "Done updating widget!");
 	}
 
 }
